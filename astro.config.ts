@@ -6,6 +6,7 @@ import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import robotsTxt from "astro-robots-txt";
 import webmanifest from "astro-webmanifest";
+import react from '@astrojs/react';
 import { defineConfig, envField } from "astro/config";
 import { expressiveCodeOptions } from "./src/site.config";
 import { siteConfig } from "./src/site.config";
@@ -27,6 +28,7 @@ export default defineConfig({
 	integrations: [
 		expressiveCode(expressiveCodeOptions),
 		icon(),
+    react(),
 		tailwind({
 			applyBaseStyles: false,
 			nesting: true,
@@ -99,6 +101,7 @@ export default defineConfig({
 	site: "https://huangxy29.github.io",
 	vite: {
 		optimizeDeps: {
+      include: ['react', 'react-dom'],
 			exclude: ["@resvg/resvg-js"],
 		},
 		plugins: [rawFonts([".ttf", ".woff"])],
